@@ -1,0 +1,1 @@
+# conjectura_collatz
