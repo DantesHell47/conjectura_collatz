@@ -15,13 +15,13 @@ function collatz(n)
 	return k, n_values
 end
 
-plot_collatz = plot(collatz(27)[2], 
-	markershape=:circle, 
+
+plot(collatz(27)[2],
+	markershape=:circle,
 	c=:green, 
 	legend=false, 
-	xlabel="Passos", 
-	ylabel="Valores",
+	xlabel="NUMEROS DE ITERAÇÕES",
+	yscale=:log10,
+	ylabel="VALORES",
 	xlim=(1, collatz(27)[1]+5))
-vline!([maximum(collatz(27)[1])],ls=:dash, lw=3.,c=:red)
-
 savefig("graph.svg")
