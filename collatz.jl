@@ -15,13 +15,29 @@ function collatz(n)
 	return k, n_values
 end
 
+function search_k(ran, num_k)
+	i, f = ran
+	lis =[]
+	for i in i:f
+		if collatz(i)[1] >= num_k
+			push!(lis, i)
+		end
+	end
+	return lis
+end
 
-plot(collatz(27)[2],
-	markershape=:circle,
-	c=:green, 
-	legend=false, 
-	xlabel="NUMEROS DE ITERAÇÕES",
-	yscale=:log10,
-	ylabel="VALORES",
-	xlim=(1, collatz(27)[1]+5))
-savefig("graph.svg")
+function plots_collatz(values)
+	plot(title="Conjectura de Collatz", xlabel="NUMEROS DE ITERAÇÕES", ylabel="VALORES")
+	for value in values
+		_, lis_values = collatz(value)
+		global z = plot!(lis_values, 
+		markershape=:circle,
+		xscale=:log10,
+		yscale=:log10,
+		label="n= $value")
+		plot!(legend=:topleft)
+	end
+	return z
+end
+plots_collatz(search_k((1,100), 111))
+
