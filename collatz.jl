@@ -17,14 +17,17 @@ end
 
 function search_k(ran, num_k)
 	i, f = ran
-	lis =[]
-	for i in i:f
-		if collatz(i)[1] >= num_k
-			push!(lis, i)
-		end
-	end
-	return lis
+	# lis =[]
+	# for i in i:f
+	# 	if collatz(i)[1] >= num_k
+	# 		push!(lis, i)
+	# 	end
+	# end
+	
+	return filter(x->collatz(x)[1] >=num_k, i:f)
 end
+
+search_k([10,1000], 111)
 
 function plots_collatz(values)
 	plot(title="Conjectura de Collatz", xlabel="NUMEROS DE ITERAÇÕES", ylabel="VALORES")
@@ -39,5 +42,6 @@ function plots_collatz(values)
 	end
 	return z
 end
-plots_collatz(search_k((1,100), 111))
 
+
+plots_collatz(search_k((1,100), 111))
