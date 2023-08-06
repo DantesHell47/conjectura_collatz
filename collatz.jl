@@ -17,13 +17,6 @@ end
 
 function search_k(ran, num_k)
 	i, f = ran
-	# lis =[]
-	# for i in i:f
-	# 	if collatz(i)[1] >= num_k
-	# 		push!(lis, i)
-	# 	end
-	# end
-	
 	return filter(x->collatz(x)[1] >=num_k, i:f)
 end
 
