@@ -4,11 +4,7 @@ function collatz(n)
 	k = 0
 	n_values = []
 	while n > 1
-		if n%2 == 0
-			n = div(n,2)
-		else
-			n = 3n + 1
-		end
+		n = n%2 == 0 ? div(n,2) : 3n+1
 		k+=1
 		push!(n_values, n)
 	end
@@ -25,16 +21,17 @@ search_k([10,1000], 111)
 function plots_collatz(values)
 	plot(title="Conjectura de Collatz", xlabel="NUMEROS DE ITERAÇÕES", ylabel="VALORES")
 	for value in values
-		_, lis_values = collatz(value)
+		k, lis_values = collatz(value)
 		global z = plot!(lis_values, 
 		markershape=:circle,
 		xscale=:log10,
 		yscale=:log10,
-		label="n= $value")
+		label="n= $value, k= $k")
 		plot!(legend=:topleft)
 	end
 	return z
 end
 
 
-plots_collatz(search_k((1,100), 111))
+plots_collatz([77031, 2*77031])
+
