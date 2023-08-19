@@ -18,6 +18,10 @@ function search_k(ran, num_k)
 	return filter(x->collatz(x)[1] >=num_k, i:f)
 end
 
+function save_collatz_results(filename, values)
+    open(filename, "w") do file
+        nothing
+
 search_k([10,1000], 111)
 
 function plots_collatz(values)
