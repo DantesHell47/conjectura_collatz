@@ -1,4 +1,4 @@
-using Plots; gr()
+using Plots
 
 function collatz(n)
 	k = 0
@@ -21,8 +21,8 @@ end
 function save_collatz_results(filename, values)
     open(filename, "w") do file
         nothing
-
-search_k([10,1000], 111)
+	end
+end
 
 function plots_collatz(values)
 	plot(title="Conjectura de Collatz", xlabel="NUMEROS DE ITERAÇÕES", ylabel="VALORES")
@@ -40,6 +40,6 @@ function plots_collatz(values)
 end
 
 
-plots_collatz([27,7031])
+plots_collatz([27,2463 ])
 
-savefig("graph.svg")
+savefig("/home/dante/Documentos/portifólio/conjectura_collatz/graph.pdf")
