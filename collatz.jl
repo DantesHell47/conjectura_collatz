@@ -1,6 +1,21 @@
 using Plots
 
-function collatz(n)
+"""
+collatz(n)
+
+Calcula a sequência de Collatz para um número inteiro 'n'.
+
+Argumentos:
+- `n::Int`: O número inteiro inicial para o cálculo da sequência de Collatz.
+
+Retorna uma tupla contendo:
+- `k::Int`: O número de iterações necessárias para atingir o valor 1 na sequência de Collatz.
+- `n_values::Vector{Int}`: Um vetor contendo todos os valores da sequência de Collatz, incluindo o valor inicial 'n' e 1.
+- `even::Int`: O número de vezes que um valor par foi encontrado durante as iterações.
+- `odd::Int`: O número de vezes que um valor ímpar foi encontrado durante as iterações.
+"""
+
+function collatz(n::Integer)
 	k = 0
 	even = 0
 	odd = 0 
@@ -39,7 +54,3 @@ function plots_collatz(values)
 	return z
 end
 
-
-plots_collatz([27,2463 ])
-
-savefig("/home/dante/Documentos/portifólio/conjectura_collatz/graph.pdf")
