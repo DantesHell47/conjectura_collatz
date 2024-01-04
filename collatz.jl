@@ -15,7 +15,10 @@ Retorna uma tupla contendo:
 - `odd::Int`: O número de vezes que um valor ímpar foi encontrado durante as iterações.
 """
 
-function collatz(n::Integer)
+function collatz(n::Real)
+	if n ≤ 0 || !isinteger(n)
+		throw(DomainError("Apenas números inteiros positivos são permitidos para a Conjectura de Collatz"))
+	end
 	k = 0
 	even = 0
 	odd = 0 
