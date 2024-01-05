@@ -22,7 +22,7 @@ function collatz(n::Real)
 	k = 0
 	even = 0
 	odd = 0 
-	n_values = []
+	n_values::Vector{Int} = []
 	while n > 1
 		n = n%2 == 0 ? (even+=1; div(n,2)) : (odd+=1; 3n+1)
 		k+=1
@@ -31,9 +31,9 @@ function collatz(n::Real)
 	return k, n_values, even, odd
 end
 
-function search_k(ran, num_k)
-	i, f = ran
-	return filter(x->collatz(x)[1] >=num_k, i:f)
+function search_k(intervalo, num_iteration)
+	i, f = intervalo
+	return filter(x->collatz(x)[1] >=num_iteration, i:f)
 end
 
 function save_collatz_results(filename, values)
