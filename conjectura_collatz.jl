@@ -8,14 +8,15 @@ mutable struct Collatz
     n_values::Vector{Int64}
 end
 
-function collatz_sequence(collatz::Collatz)
-    collatz.k = 0
-    collatz.even, collatz.odd = 0
-    collatz.n_values = [collatz.n]
+function collatz_sequence!(collatz::Collatz)
     while collatz.n != 1
-        collatz.n = collatz.n % 2 == 0 ? (collatz.even+=1, div(collatz.n, 2)) : (collatz.odd+=1, 3collatz.n + 1)
+        collatz.n = collatz.n % 2 == 0 ? (collatz.even+=1; div(collatz.n, 2)) : (collatz.odd+=1; 3*collatz.n + 1)
         collatz.k += 1
         push!(collatz.n_values, collatz.n)
     end
-    return collatz.k, collatz.n_values, (collatz.even, collatz.odd)
+    return collatz.k, collatz.even, collatz.odd, collatz.n_values
 end
+
+collatz_intance = Collatz(27, 0, 0, 0, [27])
+
+collatz_sequence!(collatz_intance)
