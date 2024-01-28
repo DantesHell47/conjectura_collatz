@@ -3,7 +3,22 @@
 # mais rapidamente sem precisar calcular novamente.
 # Aqui que a magia começa. 
 # Aqui é criado um dicionario vazio para armazenar os resultados da sequencia. No caso, `n` vai ser a chave do dicionario.
+# 
 
+
+"""
+collatz(n)
+
+`memo_dict`: Dicionario para armezenar os resultados da sequencia de Collatz
+
+Valores:
+    - Tuple{Int, Vector{Int}, Int, Int}: Tupla contendo informações sobre a sequência de Collatz para o número associado à chave.
+        - O primeiro elemento é o comprimento da sequência.
+        - O segundo elemento é um vetor contendo a sequência.
+        - O terceiro elemento é a quantidade de divisões por 2 realizadas (Ou quantidades de numeros pares na sequencia).
+        - O quarto elemento é a quantidade de aplicações da função 3n+1 realizadas (Ou quandtidades de numeros impares na sequencia).
+
+"""
 memo_dict = Dict{Int, Tuple{Int, Vector{Int}, Int, Int}}()
 
 function collatz_recursive_memo(n::Integer)
