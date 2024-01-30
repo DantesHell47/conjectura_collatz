@@ -51,17 +51,36 @@ end
 # ╔═╡ 96c3c7a2-e5eb-4a55-ab3c-4c82722e5e1a
 CSV.write("analise_collatz.csv", df)
 
-# ╔═╡ 0b7cfc4d-b025-4867-b329-dd7df6945bc8
-collatz(4 * 8400511)
+# ╔═╡ 52ac86b1-fa99-4dbc-b2c0-a81a47d369ba
+md"""
+* Por que a proporção de números pares é quase o dobro da proporção de numeors impares?
+ Iso ocorre devido a natureza da operação. Numeros pares tnedem a permanecer pares quando divididos por 2. Quanto que números ímapres se tornarão par devido a operação  $3n + 1$.
 
-# ╔═╡ 3b4384ff-6642-4d81-baba-dc247e4f75f1
+Uma forma de verificar a ultima afrimação é que, dado um número ímpar n
+podemos escrever esse número n como $n = 2k + 1$ então
 
+$3n + 1 = 3(2k + 1) + 1$
+$3(2k + 1) + 1 = 6k + 4$
+
+Sabemos que $6k + 4$ é um número divisel por 2, logo ele é par
+"""
+
+# ╔═╡ f7aae2d5-2bb1-4d38-8d84-d85ecddfcf35
+md"""
+#### A função logo abaixo retorna um dataframe de quais números `n` tem a mesma quantidade de iterações. 
+
+
+ex: Quais números `n` tem 111 iterações
+
+"""
 
 # ╔═╡ 5d3d3331-2433-4e57-a90c-0b9bb33e7e74
+
 f(qua_ite) = subset(select(df, :n, :interations), :interations => ByRow(x->x ==qua_ite))
 
-# ╔═╡ 51e0371a-b2a1-4c43-ac80-0e33e95afb57
-length(f(111).n)
+
+# ╔═╡ 4e6c5799-9d0d-47ac-bd6d-25085fb3360c
+subset(select(df, :n, :interations), :n => ByRow(x->x%2 == 0))
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1225,9 +1244,9 @@ version = "1.4.1+1"
 # ╠═b1024eec-544a-45af-ad21-a679d27c815c
 # ╠═68190ce7-eb46-4588-88c7-3db47b16f601
 # ╠═96c3c7a2-e5eb-4a55-ab3c-4c82722e5e1a
-# ╠═0b7cfc4d-b025-4867-b329-dd7df6945bc8
-# ╠═3b4384ff-6642-4d81-baba-dc247e4f75f1
+# ╠═52ac86b1-fa99-4dbc-b2c0-a81a47d369ba
+# ╟─f7aae2d5-2bb1-4d38-8d84-d85ecddfcf35
 # ╠═5d3d3331-2433-4e57-a90c-0b9bb33e7e74
-# ╠═51e0371a-b2a1-4c43-ac80-0e33e95afb57
+# ╠═4e6c5799-9d0d-47ac-bd6d-25085fb3360c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
